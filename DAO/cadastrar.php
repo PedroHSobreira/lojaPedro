@@ -33,7 +33,7 @@
         }//fim do cadastrarEndereco
 
     public function cadastrarCliente(Conexao $conexao,
-                                     long $cpf,
+                                     int $cpf,
                                      string $nome,
                                      string $telefone,
                                      string $totalCompras,

@@ -2,8 +2,15 @@
     namespace Projeto\telas;
     require_once('../php/cliente.php');
     require_once('../php/endereco.php');
+    require_once('../DAO/conexao.php');
+    require_once('../DAO/cadastrar.php');
     use Projeto\php\Cliente;
     use Projeto\php\Endereco;
+    use Projeto\DAO\Conexao;
+    use Projeto\DAO\Cadastrar;
+    //instanciar as classes
+    $conexao = new Conexao();
+    $cadastrar = new Cadastrar();
 ?>
 
 <!DOCTYPE html>
@@ -92,6 +99,7 @@
                 <button type="submit" class="btn btn-primary">Cadastrar
                     <?php
                         try{
+                            if(isset($_POST['tCPF']) != ""){
                             $cpf            = $_POST['tCpf'];
                             $nome           = $_POST['tNome'];
                             $telefone       = $_POST['tTelefone'];
@@ -104,8 +112,8 @@
                             $estado         = $_POST['tEstado'];
                             $pais           = $_POST['tPais'];
                             $totalCompras   = $_POST['tCompras'];
-
-                            $endereco = new Endereco(1, 
+                            //criado o objetivo 
+                            $cadastrar->cadastrarEndereco($conexao, 
                                                     $rua,
                                                     $numero, 
                                                     $complemento, 
@@ -116,9 +124,10 @@
                                                     $pais);
 
                             //Criando o objeto pessoa
-                            $cliente = new Cliente($cpf, $nome, $telefone, $endereco, $totalCompras);
-                            echo $cliente->imprimir();
-
+                            $cadastrar->cadastrarCliente($cpf, $nome, $telefone, $endereco, $totalCompras,1);
+                        }else{
+                            echo "Preencha os dados";
+                        }
                         }catch(Exception $erro){
                             echo "Algo deu errado!<br><br>$erro";
                         }//fim do try catch

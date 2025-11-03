@@ -1,5 +1,6 @@
 <?php
-    namespace Projeto\DAO
+    namespace Projeto\DAO;
+
 
     class Conexao{
         function conectar(){
