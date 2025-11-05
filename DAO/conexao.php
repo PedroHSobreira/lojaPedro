@@ -5,13 +5,12 @@
     class Conexao{
         function conectar(){
             try{
-                $conn = mysqli_connect('localhost', 'root', '', 'lojaPedro');
+                $conn = mysqli_connect('localhost', 'root', '', 'lojaPedro2');
                 if($conn){
-                    echo "<br>Conectado com Sucesso!";
                     return $conn;
             }
             }catch(Exception $erro){
-                echo "Algo deu errado!<br><br>$erro";
+                return "Algo deu errado!<br><br>$erro";
             }//fim do try catch
         }//fim do conectar
     }//fim da classe

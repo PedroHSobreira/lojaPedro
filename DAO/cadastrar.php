@@ -18,15 +18,11 @@
             try{
                 $conn = $conexao->conectar();//abrir a conexao com o banco
                 $sql = "insert into endereco(codigo,logradouro,numero,complemento,bairro,cep,cidade,estado,pais) 
-                        values('', '$logradouro, '$numero', '$complemento', '$bairro','$cep','$cidade','$estado','$pais')";
+                        values('', '$logradouro', '$numero', '$complemento', '$bairro','$cep','$cidade','$estado','$pais')";
                 $result = mysqli_query($conn, $sql);//fazendo o commit
 
                 //fechar a conexao
                 mysqli_close($conn);
-                if(result){
-                    echo "<br>Inserido com sucesso!";
-                }
-                return "<br><br>Não inserido";
             }catch(Exception $erro){
             return "<br><br>Algo deu errado <br><br>$erro";
             }//fim do try catch
@@ -46,6 +42,9 @@
             $result = mysqli_query($conn, $sql);//fazendo o commit
 
             mysqli_close($conn);
+            if ($result){
+                return true;
+            }
         }catch(Exception $erro){
             return "<br><br>Algo deu errado <br><br>$erro";
         }//fim do try catch

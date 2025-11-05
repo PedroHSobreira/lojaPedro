@@ -19,10 +19,10 @@
                 mysqli_close($conn);
 
                 if($result){
-                    echo "Atualizado com sucesso!";
+                    return "Atualizado com sucesso!";
                 }//fim do if
             }catch(Exception $erro){
-                    echo "Algo deu errado! $erro";
+                    return "Algo deu errado! $erro";
             }
     }//fim do atualizarCliente
 }//fim da classe
